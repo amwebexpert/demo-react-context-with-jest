@@ -19,80 +19,84 @@ describe("App tests suite", () => {
     ).toBeInTheDocument();
   });
 
-  it("should display counter initial value", () => {
-    // arrange
-    const expectedCounter = "Counter: 0";
+  describe("when rendering the counter", () => {
+    it("should display counter initial value", () => {
+      // arrange
+      const expectedCounter = "Counter: 0";
 
-    // act
-    render(<App />);
+      // act
+      render(<App />);
 
-    // assert
-    expect(
-      screen.getByRole("heading", { name: expectedCounter })
-    ).toBeInTheDocument();
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedCounter })
+      ).toBeInTheDocument();
+    });
+
+    it("should display counter default value", () => {
+      // arrange
+      const expectedCounter = 0;
+      const expectedCounterHeading = `Counter: ${expectedCounter}`;
+
+      // act
+      render(<App />);
+
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedCounterHeading })
+      ).toBeInTheDocument();
+    });
+
+    it("should display counter provided value", () => {
+      // arrange
+      const expectedCounter = 55;
+      const expectedCounterHeading = `Counter: ${expectedCounter}`;
+
+      // act
+      render(
+        <CounterProvider initialCounter={expectedCounter}>
+          <App />
+        </CounterProvider>
+      );
+
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedCounterHeading })
+      ).toBeInTheDocument();
+    });
   });
 
-  it("should display counter default value", () => {
-    // arrange
-    const expectedCounter = 0;
-    const expectedCounterHeading = `Counter: ${expectedCounter}`;
+  describe("when rendering with the app theme", () => {
+    it("should display theme default initial name", () => {
+      // arrange
+      const expectedTheme = "dark";
+      const expectedThemeHeading = `Theme: ${expectedTheme}`;
 
-    // act
-    render(<App />);
+      // act
+      render(<App />);
 
-    // assert
-    expect(
-      screen.getByRole("heading", { name: expectedCounterHeading })
-    ).toBeInTheDocument();
-  });
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedThemeHeading })
+      ).toBeInTheDocument();
+    });
 
-  it("should display counter provided value", () => {
-    // arrange
-    const expectedCounter = 55;
-    const expectedCounterHeading = `Counter: ${expectedCounter}`;
+    it("should display theme provided name", () => {
+      // arrange
+      const expectedTheme = "light";
+      const expectedThemeHeading = `Theme: ${expectedTheme}`;
 
-    // act
-    render(
-      <CounterProvider initialCounter={expectedCounter}>
-        <App />
-      </CounterProvider>
-    );
+      // act
+      render(
+        <ThemeProvider initialTheme="light">
+          <App />
+        </ThemeProvider>
+      );
 
-    // assert
-    expect(
-      screen.getByRole("heading", { name: expectedCounterHeading })
-    ).toBeInTheDocument();
-  });
-
-  it("should display theme default initial name", () => {
-    // arrange
-    const expectedTheme = "dark";
-    const expectedThemeHeading = `Theme: ${expectedTheme}`;
-
-    // act
-    render(<App />);
-
-    // assert
-    expect(
-      screen.getByRole("heading", { name: expectedThemeHeading })
-    ).toBeInTheDocument();
-  });
-
-  it("should display theme provided name", () => {
-    // arrange
-    const expectedTheme = "light";
-    const expectedThemeHeading = `Theme: ${expectedTheme}`;
-
-    // act
-    render(
-      <ThemeProvider initialTheme="light">
-        <App />
-      </ThemeProvider>
-    );
-
-    // assert
-    expect(
-      screen.getByRole("heading", { name: expectedThemeHeading })
-    ).toBeInTheDocument();
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedThemeHeading })
+      ).toBeInTheDocument();
+    });
   });
 });
