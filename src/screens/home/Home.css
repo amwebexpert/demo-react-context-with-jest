@@ -1,9 +1,10 @@
 .home-title {
   color: darkgreen;
   font-size: 1.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
-.-button {
+.home-button {
   border: 1px solid darkgreen;
+  padding: 2rem;
 }
