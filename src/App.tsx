@@ -1,15 +1,18 @@
-import { FC } from "react";
+import { FC, useContext } from "react";
 
 import "./App.css";
-import { ThemeProvider } from "./app-context/theme-provider";
+import { ThemeContext } from "./app-context/theme";
 import Home from "./screens/home/Home";
 
-const App: FC = () => (
-  <ThemeProvider>
-    <div className="app-layout">
+const App: FC = () => {
+  const { theme } = useContext(ThemeContext);
+  const { background } = theme;
+
+  return (
+    <div className="app-layout" style={{ background }}>
       <Home />
     </div>
-  </ThemeProvider>
-);
+  );
+};
 
 export default App;
