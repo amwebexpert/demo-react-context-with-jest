@@ -3,11 +3,15 @@ import {
   AvailableThemes,
   THEMES,
   ThemeContext,
-  ToggleThemeType
+  ToggleThemeType,
 } from "./theme";
 
-export const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
-  const [currentTheme, setCurrentTheme] = useState<AvailableThemes>("dark");
+type Props = PropsWithChildren & {
+  initialTheme?: AvailableThemes;
+};
+
+export const ThemeProvider: FC<Props> = ({ initialTheme = "dark", children }) => {
+  const [currentTheme, setCurrentTheme] = useState<AvailableThemes>(initialTheme);
 
   const toggle = useCallback<ToggleThemeType>(
     () => setCurrentTheme(currentTheme === "dark" ? "light" : "dark"),

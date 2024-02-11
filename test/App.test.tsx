@@ -15,5 +15,22 @@ describe("App tests suite", () => {
     expect(
       screen.getByRole("heading", { name: expectedTitle })
     ).toBeInTheDocument();
+
+    expect(
+      screen.queryByRole("heading", { name: /counter: 1/i })
+    ).not.toBeInTheDocument();
+  });
+
+  it("should display counter", () => {
+    // arrange
+    const expectedCounter = "Counter: 1";
+
+    // act
+    render(<App />);
+
+    // assert
+    expect(
+      screen.getByRole("heading", { name: expectedCounter })
+    ).toBeInTheDocument();
   });
 });
