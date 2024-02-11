@@ -5,11 +5,14 @@ import App from "./App.tsx";
 
 import { ThemeProvider } from "./app-context/theme-provider.tsx";
 import "./index.css";
+import { CounterProvider } from "./app-context/counter-provider.tsx";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <ThemeProvider>
-      <App />
+      <CounterProvider>
+        <App />
+      </CounterProvider>
     </ThemeProvider>
   </React.StrictMode>
 );
