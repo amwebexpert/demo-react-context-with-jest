@@ -11,10 +11,10 @@ import {
 
 import "./App.css";
 
-interface Theme {
-  color: string;
-  background: string;
-}
+// interface Theme {
+//   color: string;
+//   background: string;
+// }
 
 type AvailableThemes = "light" | "dark";
 
