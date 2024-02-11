@@ -1,13 +1,13 @@
 import { CSSProperties, createContext } from "react";
 
-export type AvailableThemes = "light" | "dark";
+export type ThemeName = "light" | "dark";
 
 export interface Theme {
   color: string;
   background: string;
 }
 
-export const THEMES: Record<AvailableThemes, CSSProperties> = {
+export const THEMES: Record<ThemeName, CSSProperties> = {
   light: {
     color: "#000000",
     background: "#eeeeee",
@@ -18,15 +18,18 @@ export const THEMES: Record<AvailableThemes, CSSProperties> = {
   },
 };
 
-export type SetThemeType = (theme: AvailableThemes) => void;
+export type SetThemeType = (theme: ThemeName) => void;
 export type ToggleThemeType = () => void;
 export type ThemeContextType = {
+  themeName: ThemeName;
   theme: CSSProperties;
   toggle: ToggleThemeType;
-  setCurrentTheme?: SetThemeType;
+  setThemeName?: SetThemeType;
 };
 
 export const ThemeContext = createContext<ThemeContextType>({
+  themeName: "dark",
   theme: THEMES.dark,
   toggle: () => {},
+  setThemeName: () => {},
 });

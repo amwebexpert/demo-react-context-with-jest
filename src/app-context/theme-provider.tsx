@@ -1,27 +1,25 @@
 import { FC, PropsWithChildren, useCallback, useState } from "react";
-import {
-  AvailableThemes,
-  THEMES,
-  ThemeContext,
-  ToggleThemeType,
-} from "./theme";
+import { THEMES, ThemeContext, ThemeName, ToggleThemeType } from "./theme";
 
 type Props = PropsWithChildren & {
-  initialTheme?: AvailableThemes;
+  initialTheme?: ThemeName;
 };
 
-export const ThemeProvider: FC<Props> = ({ initialTheme = "dark", children }) => {
-  const [currentTheme, setCurrentTheme] = useState<AvailableThemes>(initialTheme);
+export const ThemeProvider: FC<Props> = ({
+  initialTheme = "dark",
+  children,
+}) => {
+  const [themeName, setThemeName] = useState<ThemeName>(initialTheme);
 
   const toggle = useCallback<ToggleThemeType>(
-    () => setCurrentTheme(currentTheme === "dark" ? "light" : "dark"),
-    [currentTheme]
+    () => setThemeName(themeName === "dark" ? "light" : "dark"),
+    [themeName]
   );
 
-  const theme = THEMES[currentTheme];
+  const theme = THEMES[themeName];
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle, setCurrentTheme }}>
+    <ThemeContext.Provider value={{ themeName, theme, toggle, setThemeName }}>
       {children}
     </ThemeContext.Provider>
   );

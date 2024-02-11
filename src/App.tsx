@@ -1,16 +1,15 @@
 import { FC, useContext } from "react";
 
 import "./App.css";
+import { CounterContext } from "./app-context/counter";
 import { ThemeContext } from "./app-context/theme";
 import Home from "./screens/home/Home";
-import { CounterContext } from "./app-context/counter";
 
 const App: FC = () => {
-  const { theme } = useContext(ThemeContext);
-  const { background, color } = theme;
-
   const { counter } = useContext(CounterContext);
 
+  const { theme } = useContext(ThemeContext);
+  const { background, color } = theme;
 
   return (
     <div className="app-layout" style={{ background }}>
