@@ -8,6 +8,10 @@ Commands:
 
   `yarn dev`
 
+For setting up Jest tests:
+
+- [Installing Jest for Testing in Your Vite-React TS project](https://dev.to/hannahadora/jest-testing-with-vite-and-react-typescript-4bap)
+
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
