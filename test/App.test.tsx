@@ -3,6 +3,7 @@ import { render, screen } from "@testing-library/react";
 
 import App from "../src/App";
 import { CounterProvider } from "../src/app-context/counter-provider";
+import { ThemeProvider } from "../src/app-context/theme-provider";
 
 describe("App tests suite", () => {
   it("should display welcome message", () => {
@@ -60,6 +61,38 @@ describe("App tests suite", () => {
     // assert
     expect(
       screen.getByRole("heading", { name: expectedCounterHeading })
+    ).toBeInTheDocument();
+  });
+
+  it("should display theme default initial name", () => {
+    // arrange
+    const expectedTheme = "dark";
+    const expectedThemeHeading = `Theme: ${expectedTheme}`;
+
+    // act
+    render(<App />);
+
+    // assert
+    expect(
+      screen.getByRole("heading", { name: expectedThemeHeading })
+    ).toBeInTheDocument();
+  });
+
+  it("should display theme provided name", () => {
+    // arrange
+    const expectedTheme = "light";
+    const expectedThemeHeading = `Theme: ${expectedTheme}`;
+
+    // act
+    render(
+      <ThemeProvider initialTheme="light">
+        <App />
+      </ThemeProvider>
+    );
+
+    // assert
+    expect(
+      screen.getByRole("heading", { name: expectedThemeHeading })
     ).toBeInTheDocument();
   });
 });
