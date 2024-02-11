@@ -12,10 +12,10 @@ const Home: FC = () => {
 
   return (
     <>
-      <div className="home-title">React Context test</div>
+      <div className="home-title">Theme infos:</div>
       <ul>
-        <li style={{ color }}>Color: {color}</li>
-        <li style={{ color }}>Background: {background}</li>
+        <li style={{ color }}>color: {color}</li>
+        <li style={{ color }}>background: {background}</li>
       </ul>
 
       <button
