@@ -9,4 +9,6 @@ export default {
     "\\.(css|less|sass|scss)$": "<rootDir>/test/__mocks__/styleMock.js",
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__ mocks __/fileMock.js",
   },
+  collectCoverage: true,
+  coverageReporters: ["json", "html"],
 };
