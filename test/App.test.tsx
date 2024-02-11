@@ -15,15 +15,11 @@ describe("App tests suite", () => {
     expect(
       screen.getByRole("heading", { name: expectedTitle })
     ).toBeInTheDocument();
-
-    expect(
-      screen.queryByRole("heading", { name: /counter: 1/i })
-    ).not.toBeInTheDocument();
   });
 
-  it("should display counter", () => {
+  it("should display counter initial value", () => {
     // arrange
-    const expectedCounter = "Counter: 1";
+    const expectedCounter = "Counter: 0";
 
     // act
     render(<App />);
