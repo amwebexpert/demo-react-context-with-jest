@@ -7,11 +7,6 @@ import * as useCounterContextModule from "../../src/context/use-counter-context"
 import { CounterContextType } from "../../src/context/counter";
 import { ThemeProvider } from "../../src/context/theme-provider";
 
-jest.mock("../../src/screens/home/Home", () => ({
-  __esModule: true,
-  default: jest.fn(() => null), // jest.fn(implementation) is a shorthand for jest.fn().mockImplementation(implementation)
-}));
-
 describe("Header tests suite", () => {
   it("should display welcome message", () => {
     // arrange
