@@ -4,6 +4,8 @@ import { render, screen } from "@testing-library/react";
 import App from "../src/App";
 import { CounterProvider } from "../src/app-context/counter-provider";
 import { ThemeProvider } from "../src/app-context/theme-provider";
+import * as useCounterContextModule from "../src/app-context/use-counter-context";
+import { CounterContextType } from "../src/app-context/counter";
 
 describe("App tests suite", () => {
   it("should display welcome message", () => {
@@ -20,19 +22,6 @@ describe("App tests suite", () => {
   });
 
   describe("when rendering the counter", () => {
-    it("should display counter initial value", () => {
-      // arrange
-      const expectedCounter = "Counter: 0";
-
-      // act
-      render(<App />);
-
-      // assert
-      expect(
-        screen.getByRole("heading", { name: expectedCounter })
-      ).toBeInTheDocument();
-    });
-
     it("should display counter default value", () => {
       // arrange
       const expectedCounter = 0;
@@ -58,6 +47,30 @@ describe("App tests suite", () => {
           <App />
         </CounterProvider>
       );
+
+      // assert
+      expect(
+        screen.getByRole("heading", { name: expectedCounterHeading })
+      ).toBeInTheDocument();
+    });
+
+    it("should display counter provided value (without CounterProvider version)", () => {
+      // arrange
+      const expectedCounter = 77;
+      const expectedCounterHeading = `Counter: ${expectedCounter}`;
+
+      const counterContext: CounterContextType = {
+        counter: expectedCounter,
+        increment: jest.fn(),
+        decrement: jest.fn(),
+      };
+
+      jest
+        .spyOn(useCounterContextModule, "useCounterContext")
+        .mockReturnValue(counterContext);
+
+      // act
+      render(<App />);
 
       // assert
       expect(

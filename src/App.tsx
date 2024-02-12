@@ -1,12 +1,12 @@
 import { FC, useContext } from "react";
 
 import "./App.css";
-import { CounterContext } from "./app-context/counter";
 import { ThemeContext } from "./app-context/theme";
+import { useCounterContext } from "./app-context/use-counter-context";
 import Home from "./screens/home/Home";
 
 const App: FC = () => {
-  const { counter } = useContext(CounterContext);
+  const { counter } = useCounterContext();
 
   const { theme, themeName } = useContext(ThemeContext);
   const { background, color } = theme;
