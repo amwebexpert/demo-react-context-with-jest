@@ -4,14 +4,22 @@ import { ThemeContext } from "../../app-context/theme";
 import "./Home.css";
 import { CounterContext } from "../../app-context/counter";
 
-const Home: FC = () => {
+type Props = {
+  userName?: string;
+};
+
+const Home: FC<Props> = ({ userName }) => {
   const { theme, toggle } = useContext(ThemeContext);
   const { background, color } = theme;
 
   const { counter, increment } = useContext(CounterContext);
 
+  const hasUserName = !!userName;
+
   return (
     <>
+      {hasUserName && <h3 style={{ color }}>Good morning {userName}!</h3>}
+
       <div className="home-title">Theme infos:</div>
       <ul>
         <li style={{ color }}>color: {color}</li>
