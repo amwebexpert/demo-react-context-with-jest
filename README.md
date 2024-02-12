@@ -1,5 +1,25 @@
 # React + TypeScript + Vite
 
+Webapp sandbox project for:
+
+- React experiments
+- Typescript experiments
+- Jest testing strategies proofs of concept
+
+## References
+
+- [Component testing](https://www.alexhyett.com/unit-testing-vs-integration-testing/#component-tests)
+- [Unit testing](https://www.alexhyett.com/unit-testing-vs-integration-testing/#unit-tests)
+- Mocking techniques:
+  - https://nancyhuynh-til.netlify.app/jest-mocking-useContext/
+  - https://polvara.me/posts/mocking-context-with-react-testing-library
+  - https://thoughtbot.com/blog/mocking-react-components-with-jest
+  - https://medium.com/@taylormclean15/jest-testing-mocking-child-components-to-make-your-unit-tests-more-concise-18691ef6a0c2
+  - https://stackoverflow.com/a/72450016/704681
+
+
+## Project commands and settings
+
 Project created with Vite.js with typescript support
 
   `yarn create vite demo-react-context-with-jest --template react-ts`
