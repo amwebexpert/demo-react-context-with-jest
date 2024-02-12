@@ -17,7 +17,7 @@ const App: FC = () => {
       <h2 style={{ background, color }}>Theme: {themeName}</h2>
       <h2 style={{ background, color }}>Counter: {counter}</h2>
 
-      <Home />
+      <Home userName="John Smith" />
     </div>
   );
 };
