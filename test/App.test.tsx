@@ -2,10 +2,10 @@ import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 
 import App from "../src/App";
-import { CounterProvider } from "../src/app-context/counter-provider";
-import { ThemeProvider } from "../src/app-context/theme-provider";
-import * as useCounterContextModule from "../src/app-context/use-counter-context";
-import { CounterContextType } from "../src/app-context/counter";
+import { CounterProvider } from "../src/context/counter-provider";
+import { ThemeProvider } from "../src/context/theme-provider";
+import * as useCounterContextModule from "../src/context/use-counter-context";
+import { CounterContextType } from "../src/context/counter";
 import Home from "../src/screens/home/Home";
 
 jest.mock("../src/screens/home/Home", () => ({

@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 
 import "./App.css";
-import { ThemeContext } from "./app-context/theme";
-import { useCounterContext } from "./app-context/use-counter-context";
+import { ThemeContext } from "./context/theme";
+import { useCounterContext } from "./context/use-counter-context";
 import Home from "./screens/home/Home";
 
 const App: FC = () => {

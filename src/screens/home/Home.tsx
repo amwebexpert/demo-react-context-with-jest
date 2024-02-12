@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 
-import { ThemeContext } from "../../app-context/theme";
+import { ThemeContext } from "../../context/theme";
 import "./Home.css";
-import { CounterContext } from "../../app-context/counter";
+import { CounterContext } from "../../context/counter";
 
 type Props = {
   userName?: string;
