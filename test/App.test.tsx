@@ -6,6 +6,12 @@ import { CounterProvider } from "../src/app-context/counter-provider";
 import { ThemeProvider } from "../src/app-context/theme-provider";
 import * as useCounterContextModule from "../src/app-context/use-counter-context";
 import { CounterContextType } from "../src/app-context/counter";
+import Home from "../src/screens/home/Home";
+
+jest.mock("../src/screens/home/Home", () => ({
+  __esModule: true,
+  default: jest.fn(() => null), // jest.fn(implementation) is a shorthand for jest.fn().mockImplementation(implementation)
+}));
 
 describe("App tests suite", () => {
   it("should display welcome message", () => {
@@ -19,6 +25,19 @@ describe("App tests suite", () => {
     expect(
       screen.getByRole("heading", { name: expectedTitle })
     ).toBeInTheDocument();
+  });
+
+  it("should render Home component", () => {
+    // arrange
+
+    // act
+    render(<App />);
+
+    // assert
+    expect(Home as jest.Mock).toHaveBeenCalledWith(
+      { userName: "John Smith" },
+      {}
+    );
   });
 
   describe("when rendering the counter", () => {
